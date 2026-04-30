@@ -1,6 +1,44 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0F111A;
+  --color-surface: #1A1D29;
+  --color-border: rgba(163, 174, 208, 0.1);
+  --color-muted: #A3AED0;
+  --color-soft: #CBD5E1;
+  --color-accent: #7B61FF;
+  --color-accent-hover: #6A4FE6;
+  --color-accent-soft: rgba(123, 97, 255, 0.2);
+
+  --font-sans: "Inter", "system-ui", "-apple-system", "sans-serif";
+
+  --animate-orb-float: orbFloat 14s ease-in-out infinite;
+  --animate-orb-float-slow: orbFloat 22s ease-in-out infinite;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes orbFloat {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(20px, -30px) scale(1.05);
+  }
+  66% {
+    transform: translate(-15px, 20px) scale(0.95);
+  }
+}
 
 @layer base {
   :root {
@@ -12,41 +50,43 @@
   }
 
   body {
-    @apply bg-bg text-white font-sans antialiased;
-    font-feature-settings: "cv11", "ss01";
+    background-color: var(--color-bg);
+    color: white;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
   }
 
   ::selection {
-    @apply bg-accent/40 text-white;
+    background-color: color-mix(in oklab, var(--color-accent) 40%, transparent);
+    color: white;
   }
 
   *:focus-visible {
-    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-bg rounded;
+    outline: none;
+    border-radius: 0.25rem;
+    box-shadow:
+      0 0 0 2px var(--color-bg),
+      0 0 0 4px var(--color-accent);
   }
 }
 
-@layer components {
-  .container-x {
-    @apply mx-auto w-full max-w-6xl px-5 sm:px-6 lg:px-8;
-  }
+@utility reveal {
+  opacity: 0;
+}
 
-  .section {
-    @apply py-20 sm:py-28 scroll-mt-24;
-  }
+@utility reveal-in {
+  animation: fadeInUp 600ms ease-out forwards;
+}
 
-  .section-eyebrow {
-    @apply text-xs uppercase tracking-[0.18em] text-accent font-semibold;
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-in {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
-
-  .section-title {
-    @apply mt-3 text-3xl sm:text-4xl font-bold tracking-tight text-white;
-  }
-
-  .section-lead {
-    @apply mt-3 max-w-2xl text-base text-muted leading-relaxed;
-  }
-
-  .card {
-    @apply rounded-2xl border border-border bg-surface/60 backdrop-blur-sm;
+  html {
+    scroll-behavior: auto;
   }
 }
