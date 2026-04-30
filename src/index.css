@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg text-white font-sans antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+
+  ::selection {
+    @apply bg-accent/40 text-white;
+  }
+
+  *:focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-bg rounded;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-20 sm:py-28 scroll-mt-24;
+  }
+
+  .section-eyebrow {
+    @apply text-xs uppercase tracking-[0.18em] text-accent font-semibold;
+  }
+
+  .section-title {
+    @apply mt-3 text-3xl sm:text-4xl font-bold tracking-tight text-white;
+  }
+
+  .section-lead {
+    @apply mt-3 max-w-2xl text-base text-muted leading-relaxed;
+  }
+
+  .card {
+    @apply rounded-2xl border border-border bg-surface/60 backdrop-blur-sm;
+  }
+}
