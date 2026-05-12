@@ -7,7 +7,6 @@ export function Experience() {
   return (
     <Section id="experience">
       <SectionHeading
-        eyebrow="Journey"
         title="Experience &"
         highlight="Education"
         lead="My academic journey and professional experiences that shaped my expertise"
