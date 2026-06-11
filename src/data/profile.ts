@@ -6,7 +6,7 @@ export const profile = {
   email: "saadnadeem5509@gmail.com",
   phone: "+92 304 9417255",
   resumeUrl: "/resume.pdf",
-  profileImage: "/images/profile.jpeg",
+  profileImage: "/images/profile.webp",
   socials: {
     github: "https://github.com/Saadnadeem07",
     linkedin: "https://www.linkedin.com/in/saadnadeem07/",
