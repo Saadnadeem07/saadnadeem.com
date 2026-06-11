@@ -57,7 +57,7 @@ export function Hero() {
         <div id="about" className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center scroll-mt-24">
           <div className="space-y-6 sm:space-y-8 order-2 lg:order-1">
             <div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-white">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-heading">
                 {profile.name}
               </h1>
               <p className="mt-3 text-accent text-xl sm:text-2xl lg:text-3xl font-semibold leading-tight max-w-xl">
@@ -66,7 +66,7 @@ export function Hero() {
             </div>
 
             <p className="text-soft text-base sm:text-lg leading-relaxed max-w-xl">
-              <span className="text-white font-medium">
+              <span className="text-heading font-medium">
                 Software engineer with hands-on experience across the full delivery
                 pipeline — building <span className="font-bold text-accent">MERN</span> apps,
                 containerising them with <span className="font-bold text-accent">Docker</span>,

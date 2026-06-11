@@ -15,7 +15,7 @@ export function Services() {
             <div className="grid h-12 w-12 place-items-center rounded-lg bg-accent/20 mb-4 group-hover:bg-accent/30 transition-colors">
               <Icon className="h-6 w-6 text-accent" />
             </div>
-            <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-accent transition-colors">
+            <h3 className="text-lg font-semibold text-heading mb-2 group-hover:text-accent transition-colors">
               {title}
             </h3>
             <p className="text-soft text-sm leading-relaxed">{description}</p>

@@ -3,7 +3,7 @@ import { Link } from "react-scroll";
 import { Menu, X } from "lucide-react";
 import clsx from "clsx";
 import { Container } from "./Container";
-import { SocialIcons } from "./SocialIcons";
+import { ThemeToggle } from "./ThemeToggle";
 import { navLinks } from "../../data/nav";
 import { profile } from "../../data/profile";
 
@@ -41,7 +41,7 @@ export function Navbar() {
           <span className="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-accent to-muted text-white font-bold">
             {profile.initials}
           </span>
-          <span className="text-base sm:text-lg font-semibold text-white">
+          <span className="text-base sm:text-lg font-semibold text-heading">
             {profile.name}
           </span>
         </Link>
@@ -58,7 +58,7 @@ export function Navbar() {
                 onSetActive={() => setActive(l.to)}
                 className={clsx(
                   "relative text-sm font-medium cursor-pointer transition-colors",
-                  active === l.to ? "text-white" : "text-soft hover:text-white",
+                  active === l.to ? "text-heading" : "text-soft hover:text-heading",
                 )}
               >
                 <span className="relative inline-block">
@@ -75,20 +75,23 @@ export function Navbar() {
           ))}
         </ul>
 
-        <div className="hidden md:flex">
-          <SocialIcons />
+        <div className="hidden md:flex items-center gap-3">
+          <ThemeToggle />
         </div>
 
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          className="md:hidden grid h-10 w-10 place-items-center rounded-lg border border-border bg-surface/60 text-white"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-        >
-          {open ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="grid h-10 w-10 place-items-center rounded-lg border border-border bg-surface/60 text-heading"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+          >
+            {open ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </Container>
 
       <div
@@ -112,7 +115,7 @@ export function Navbar() {
                   onSetActive={() => setActive(l.to)}
                   className={clsx(
                     "block px-2 py-3 text-base font-medium cursor-pointer",
-                    active === l.to ? "text-accent" : "text-white",
+                    active === l.to ? "text-accent" : "text-heading",
                   )}
                 >
                   {l.label}
@@ -120,9 +123,6 @@ export function Navbar() {
               </li>
             ))}
           </ul>
-          <div className="pt-4 border-t border-border mt-2">
-            <SocialIcons />
-          </div>
         </Container>
       </div>
     </header>

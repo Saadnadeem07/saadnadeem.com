@@ -14,6 +14,8 @@ export type Project = {
   description: string;
   technologies: string[];
   codeUrl: string;
+  /** Optional live deployment URL. When set, a "Live Demo" link is shown. */
+  liveUrl?: string;
   visual: ProjectVisual;
 };
 

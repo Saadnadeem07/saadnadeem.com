@@ -9,6 +9,7 @@
   --color-accent: #7B61FF;
   --color-accent-hover: #6A4FE6;
   --color-accent-soft: rgba(123, 97, 255, 0.2);
+  --color-heading: #FFFFFF;
 
   --font-sans: "Inter", "system-ui", "-apple-system", "sans-serif";
 
@@ -40,6 +41,32 @@
   }
 }
 
+/* Runtime theme values. Unlayered so they win over the layered @theme defaults.
+   The inline script in index.html sets data-theme before paint to avoid a flash. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: #0F111A;
+  --color-surface: #1A1D29;
+  --color-border: rgba(163, 174, 208, 0.1);
+  --color-muted: #A3AED0;
+  --color-soft: #CBD5E1;
+  --color-heading: #FFFFFF;
+  --color-accent: #7B61FF;
+  --color-accent-hover: #6A4FE6;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --color-bg: #F4F5FB;
+  --color-surface: #FFFFFF;
+  --color-border: rgba(15, 17, 26, 0.1);
+  --color-muted: #5B6480;
+  --color-soft: #3F475C;
+  --color-heading: #0F111A;
+  --color-accent: #5B3FD6;
+  --color-accent-hover: #4d33c0;
+}
+
 @layer base {
   :root {
     color-scheme: dark;
@@ -51,7 +78,7 @@
 
   body {
     background-color: var(--color-bg);
-    color: white;
+    color: var(--color-heading);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     min-height: 100vh;

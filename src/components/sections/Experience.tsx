@@ -30,7 +30,7 @@ export function Experience() {
               <article className="rounded-xl border border-border bg-gradient-to-br from-surface to-bg p-6 transition-all duration-300 hover:border-accent/30 hover:shadow-2xl hover:shadow-accent/10">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
-                    <h3 className="text-white font-semibold text-lg sm:text-xl">
+                    <h3 className="text-heading font-semibold text-lg sm:text-xl">
                       {entry.title}
                     </h3>
                     {entry.subtitle && (

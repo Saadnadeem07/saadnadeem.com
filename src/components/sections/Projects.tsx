@@ -1,4 +1,4 @@
-import { Code } from "lucide-react";
+import { Code, ExternalLink } from "lucide-react";
 import { Section, SectionHeading } from "../layout/Section";
 import { useReveal } from "../../lib/useReveal";
 import { projects } from "../../data/projects";
@@ -34,7 +34,7 @@ export function Projects() {
             </div>
 
             <div className="flex flex-1 flex-col p-6">
-              <h3 className="text-white font-bold text-lg mb-2 group-hover:text-accent transition-colors">
+              <h3 className="text-heading font-bold text-lg mb-2 group-hover:text-accent transition-colors">
                 {project.title}
               </h3>
               <p className="text-soft text-sm leading-relaxed mb-4 flex-1">
@@ -52,15 +52,28 @@ export function Projects() {
                 ))}
               </ul>
 
-              <a
-                href={project.codeUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 text-muted hover:text-accent text-sm font-medium transition-colors w-fit"
-              >
-                <Code className="h-4 w-4" />
-                View Code
-              </a>
+              <div className="flex flex-wrap items-center gap-5">
+                <a
+                  href={project.codeUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 text-muted hover:text-accent text-sm font-medium transition-colors w-fit"
+                >
+                  <Code className="h-4 w-4" />
+                  View Code
+                </a>
+                {project.liveUrl && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 text-accent hover:text-accent-hover text-sm font-medium transition-colors w-fit"
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                    Live Demo
+                  </a>
+                )}
+              </div>
             </div>
           </article>
         ))}
