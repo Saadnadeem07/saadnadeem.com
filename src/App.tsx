@@ -7,6 +7,8 @@ import { Skills } from "./components/sections/Skills";
 import { Certifications } from "./components/sections/Certifications";
 import { Contact } from "./components/sections/Contact";
 import { Footer } from "./components/sections/Footer";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 export default function App() {
   return (
@@ -28,6 +30,8 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <Analytics />
+      <SpeedInsights />
     </div>
   );
 }
