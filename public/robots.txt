@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://saadnadeem.com/sitemap.xml
+Sitemap: https://www.saadnadeem.com/sitemap.xml
