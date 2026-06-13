@@ -1,0 +1,56 @@
+---
+title: "Multi-Environment Kubernetes Deployments with GitOps, Helm & ArgoCD"
+description: "How I designed a GitOps workflow to deploy a multi-service app across dev and prod Kubernetes clusters using Helm, ArgoCD, and environment-specific config."
+date: "2026-06-13"
+tags: ["Kubernetes", "GitOps", "ArgoCD", "Helm"]
+---
+
+This is a starter post — replace it with your own write-up. It exists to show the
+MDX blog pipeline works end-to-end: frontmatter, rendering, and per-post metadata.
+
+## The problem
+
+Deploying the same application to multiple environments by hand is error-prone:
+config drifts, secrets get copied incorrectly, and "it worked in dev" becomes a
+recurring incident. I wanted a single source of truth where **Git is the desired
+state** and the cluster continuously reconciles toward it.
+
+## The approach
+
+- **Helm** to template the manifests once and parameterize per environment.
+- **Environment-specific values** (`values-dev.yaml`, `values-prod.yaml`) for
+  ConfigMaps, Secrets, resource limits, and health probes.
+- **ArgoCD** to watch the repo and sync each environment automatically.
+
+```yaml
+# argocd/app-prod.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: webapp-prod
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Saadnadeem07/dockerized-webapp-ci-cd
+    path: charts/webapp
+    helm:
+      valueFiles:
+        - values-prod.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: prod
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+```
+
+## What I learned
+
+1. **`selfHeal: true`** turns drift into a non-issue — manual `kubectl` edits get
+   reverted to match Git.
+2. Keeping **probes and resource limits in values files** made the prod/dev
+   difference explicit and reviewable in a pull request.
+3. GitOps makes rollbacks trivial: revert the commit, ArgoCD does the rest.
+
+> Want the full walkthrough? Reach out via the [contact section](/#contact).

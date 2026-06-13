@@ -1,3 +1,5 @@
+"use client";
+
 import { Mail, Phone } from "lucide-react";
 import { Github, LinkedIn } from "../icons/BrandIcons";
 import { Section, SectionHeading } from "../layout/Section";

@@ -1,3 +1,5 @@
+"use client";
+
 import { Section } from "../layout/Section";
 import { useReveal } from "../../lib/useReveal";
 import { services } from "../../data/services";

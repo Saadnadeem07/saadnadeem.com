@@ -1,3 +1,5 @@
+"use client";
+
 import { Section, SectionHeading } from "../layout/Section";
 import { useReveal } from "../../lib/useReveal";
 import { experience } from "../../data/experience";

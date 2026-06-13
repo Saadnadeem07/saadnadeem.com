@@ -1,3 +1,5 @@
+"use client";
+
 import { Code, ExternalLink } from "lucide-react";
 import { Section, SectionHeading } from "../layout/Section";
 import { useReveal } from "../../lib/useReveal";
