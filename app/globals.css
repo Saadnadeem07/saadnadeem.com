@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme {
   --color-bg: #0F111A;
@@ -42,7 +43,7 @@
 }
 
 /* Runtime theme values. Unlayered so they win over the layered @theme defaults.
-   The inline script in index.html sets data-theme before paint to avoid a flash. */
+   The inline script in the layout sets data-theme before paint to avoid a flash. */
 :root[data-theme="dark"] {
   color-scheme: dark;
   --color-bg: #0F111A;
@@ -96,6 +97,25 @@
       0 0 0 2px var(--color-bg),
       0 0 0 4px var(--color-accent);
   }
+}
+
+/* Make @tailwindcss/typography (.prose) follow the active theme tokens */
+.prose {
+  --tw-prose-body: var(--color-soft);
+  --tw-prose-headings: var(--color-heading);
+  --tw-prose-lead: var(--color-soft);
+  --tw-prose-links: var(--color-accent);
+  --tw-prose-bold: var(--color-heading);
+  --tw-prose-counters: var(--color-muted);
+  --tw-prose-bullets: var(--color-accent);
+  --tw-prose-hr: var(--color-border);
+  --tw-prose-quotes: var(--color-soft);
+  --tw-prose-quote-borders: var(--color-accent);
+  --tw-prose-code: var(--color-heading);
+  --tw-prose-pre-code: var(--color-soft);
+  --tw-prose-pre-bg: var(--color-surface);
+  --tw-prose-th-borders: var(--color-border);
+  --tw-prose-td-borders: var(--color-border);
 }
 
 @utility reveal {
