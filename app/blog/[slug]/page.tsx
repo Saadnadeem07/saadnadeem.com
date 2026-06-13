@@ -41,8 +41,34 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   const post = getPost(slug);
   if (!post) notFound();
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.meta.title,
+    description: post.meta.description,
+    datePublished: post.meta.date || undefined,
+    dateModified: post.meta.date || undefined,
+    keywords: post.meta.tags.join(", "),
+    url: `https://www.saadnadeem.com/blog/${slug}`,
+    mainEntityOfPage: `https://www.saadnadeem.com/blog/${slug}`,
+    author: {
+      "@type": "Person",
+      name: "Saad Nadeem",
+      url: "https://www.saadnadeem.com/",
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Saad Nadeem",
+      url: "https://www.saadnadeem.com/",
+    },
+  };
+
   return (
     <main className="relative z-10 pt-28 sm:pt-32 pb-16 sm:pb-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       <Container>
         <article className="mx-auto max-w-3xl">
           <NextLink
